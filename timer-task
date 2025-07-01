@@ -1,0 +1,14 @@
+{
+  "Comment": "Step Function with Wait state only",
+  "StartAt": "WaitFor15Seconds",
+  "States": {
+    "WaitFor15Seconds": {
+      "Type": "Wait",
+      "Seconds": 15,
+      "Next": "Done"
+    },
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}
