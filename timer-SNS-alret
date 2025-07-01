@@ -1,0 +1,24 @@
+{
+  "Comment": "Step Function with Wait and SNS Email Notification",
+  "StartAt": "WaitFor15Seconds",
+  "States": {
+    "WaitFor15Seconds": {
+      "Type": "Wait",
+      "Seconds": 15,
+      "Next": "SendEmail"
+    },
+    "SendEmail": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "arn:aws:sns:ap-south-1:442042513103:my-sns",
+        "Message": "✅ Step Function completed after 15-second wait!",
+        "Subject": "Step Function Notification"
+      },
+      "Next": "Done"
+    },
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}
